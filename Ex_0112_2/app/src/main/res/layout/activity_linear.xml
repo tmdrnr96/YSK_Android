@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LinearActivity"
+    android:orientation="vertical">
+    <!--LinearLayout은 반드시 orientation을 가지고 있어야 한다.-->
+    <!--절대로 겹쳐서 표시되지 않고 가로(horizontal)나 세로(vertical)로 표시-->
+
+    
+    <!--대문자가 섞인 참조파일은 만들 수 없다.-->
+
+    <!--LinearLayout은 방향성(orientation)을 가지고 있다.
+        vertical : 수직
+        horizontal : 수평
+        안드로이드는 태그 중간에 주석을 달수 없다.-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안녕하세요!"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="반갑습니다!"/>
+
+
+</LinearLayout>
