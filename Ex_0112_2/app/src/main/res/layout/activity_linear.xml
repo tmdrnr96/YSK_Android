@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".LinearActivity"
     android:orientation="vertical">
+
     <!--LinearLayout은 반드시 orientation을 가지고 있어야 한다.-->
     <!--절대로 겹쳐서 표시되지 않고 가로(horizontal)나 세로(vertical)로 표시-->
-
+    <!--상대적인 값으로 만들어야 해상도가 변해도 깨지지 않는다.-->
     
     <!--대문자가 섞인 참조파일은 만들 수 없다.-->
 
@@ -16,15 +17,92 @@
         vertical : 수직
         horizontal : 수평
         안드로이드는 태그 중간에 주석을 달수 없다.-->
+
+    <!--"match_parent" : 부모의 영역 만큼(가득 채운다) HTML의 블록 요소같은 느낌-->
+    <!--"wrap_content" : 해당요소의 크기만큼 채운다. (HTML의 인라인 요소같은 느낌 )-->
+
+    <!--width, heigt 속성: wrap_content - 안의 내용물 사이즈 만큼 너비나 높이를 지정
+                           match_content - 부모영역 가득 채워진 사이즈로 너비나 높이를 지정-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="안녕하세요!"/>
+        android:text="안녕하세요!"
+        android:background="#aaf"/>
 
+    <!--"match_parent" : 자신보다 아랫쪽에 만들어진 객체한테는 영향을 주지만
+                         자신보다 위쪽에 만들어진 객체한테 영향을 주지 않는다.-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="반갑습니다!"/>
+        android:text="반갑습니다!"
+        android:background="#8bc"/>
 
+    <!--안드로이드의 단위 개념 : dp
+    device independent pixel : 디바이스의 독립적인 픽셀 단위
+    안드로이드는 다양한 기종의 해상도를 고려하여 dp단위를 사용하는 것을 권장-->
+    <!--값이 크면 클수록 dp값이 오차가 생긴다.(한계)-->
+
+    <!--"@mipmap/ic_launcher_round"/> : mipmap 폴더 안에서 해상도에 맞는 이미지 삽입-->
+    <!--values의 themes.xml을 변경해줘야한다. -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:text="나는 버튼"
+        android:background="@mipmap/ic_launcher_round"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="check test"/>
+
+    <!--라디오 버튼은 라디오 그룹 안에 생성되어야 중복선택이 안됨-->
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="버튼 1"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="버튼 2"/>
+
+    </RadioGroup>
+
+    <!--EditText : 키보드에서 값을 받기 위한 것-->
+    <!--ems : ems의 값이 커질수록 EditText가 커진다.-->
+    <!--  android:inputType="text" : 텍스트가 엔터값으로 인해 높이가 변하지 않는다.-->
+    <!--  android:inputType="number" : 숫자만 입력 가능하게 만든다-->
+    <!--  android:inputType="textEmailAddress" : 이메일을 쓸수 있게 골뱅이를 키보드에서 제공해준다.-->
+    <!--  android:inputType="numberPassword" : 비밀번호가 숫자만 가능하게 만든다.-->
+    <!--  android:inputType="textPassword" : 숫자와 문자를 포함한 비밀번호가 가능하게 만든다.-->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint="input text"
+        android:inputType="textPassword"/>
+
+    <!--동영상 제어 바-->
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!--로딩 페이지에서 쓰이는 것-->
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!--별점-->
+    <!--numStars : 별의 갯수를 조절할 수 있다. 기본적으로 5개!-->
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"/>
 
 </LinearLayout>

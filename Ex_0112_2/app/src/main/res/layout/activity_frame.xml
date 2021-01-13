@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FrameActivity">
+
+    <!--프레임 레이아웃은 내부 자식객체를 겹쳐서 표시하며, 방향성을 가지고 있지 않다.-->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#f00"
+        android:text="테스트1"
+        android:textSize="30dp"
+        android:textColor="#fff"/>
+
+    <!--왼쪽 위쪽으로 겹쳐져서 보인다.-->
+    <!--margin : 바깥쪽 여백(HTML과 다르게 한번에 위 아래 좌우를 각각따로 줄 수 없다.)-->
+    <!--프레임 레이아웃은 방향성이 없는 대신 여백을 통해서 공간을 확보할 수 있다.(미세한 여백)-->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#0f0"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00f"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"/>
+
+    <!--프레임 레이아웃은 객체의 미세한 이동은 마진으로 하되, 마진값이 거치면
+    해상도의 오차범위가 커진다...-->
+    <!--layout_gravity : 현재 속성을 가진 객체를 통째로 위치 변환 시키기-->
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#70FF99"
+        android:layout_gravity="right" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="오른쪽"
+        android:layout_gravity="right"/>
+
+    <!--layout_gravity는 한 객체에 한번밖에 사용을 못한다. 한객체에서 2번 사용하고 싶을때는 or연산자를 사용한다.-->
+    <!--gravity는 부모가 가지고 있는 내용물의 위치를 바꿀 수 있다.-->
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="테스트"
+        android:background="#aaf"
+        android:layout_gravity="bottom|right"
+        android:gravity="right|bottom"/>
+
+    <!--center_horizontal : 수평에서 가운데 라인 정렬-->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="#FADD88"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="b1"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="b2"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#009688"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#FF6666"
+        android:text="중앙"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+</FrameLayout>
