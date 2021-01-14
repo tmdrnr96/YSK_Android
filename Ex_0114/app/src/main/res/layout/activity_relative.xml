@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RelativeActivity">
+    <!--RelativeLayout은 방향성을 가지고 있지 않다.
+    위치값을 상대적으로 조정하여 원하는 자리로 배치할 수 있다. -->
+
+    <!--id : 특정 객체를 식별하기 의한 식별자로,
+              하나의 레이아웃 안에서 중복되는 이름을 여러개 생성할 수 없다.-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL"
+        android:textSize="40dp"
+        android:id="@+id/txt"/>
+    <!--ID는 중복되지 않게 설정 : 특정객체를 식별하기 위한 식별자-->
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_toRightOf="@id/txt"/>
+    <!--layout_toRightOf: 특정 id의 오른쪽에 위치-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_below="@id/et"
+        android:layout_alignRight="@id/et"/>
+    <!--layout_below : 특정 id의 위치 ~ 의 아랫쪽에 위치-->
+    <!--layout_alignRight : 특정 id의 위치 끝 쪽에 맞춘다-->
+
+    <!--@ +id: id를 새로 생성할 때-->
+    <!--@ id: 이미 만들어진 id를 참조 -->
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_centerInParent="true"/>
+    <!--layout_centerInParent : 부모를 기준으로 가운데 위치치-->
+    <!--부모 레이아웃이 Relativelayout인 경우
+    Layout_gravity속성을 사용할 수 없다(상대적인 경로이기 때문에)
+    부모가 Relativelayout인 이상 기준을 잡아줘야 위치를 변경시킬 수 있다.-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
