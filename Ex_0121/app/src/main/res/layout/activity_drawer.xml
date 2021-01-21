@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DrawerActivity"
+    android:orientation="vertical">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#aff">
+
+            <!--상단의 타이틀바처럼 사용할 영역 설정-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#aaf"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/menu_show"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/opendrawer"/>
+            </LinearLayout>
+
+            <!--실행했을 때 메인으로 보여질 화면 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="여기는 메인화면 입니다."
+                    android:textSize="25dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--숨겨져 있다가 열리면서 보여질 서랍 레이아웃-->
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#8ac"
+            android:id="@+id/drawer"
+            android:layout_gravity="start">
+
+            <!--서랍이 열리는 위치-->
+            <!--start : 왼쪽 시작하는 부분에 위치!-->
+            <!--end : 오른쪽 시작하는 부분에 위치!-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="여기는 서랍입니다."
+                android:textSize="25dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="서랍닫기"
+                android:id="@+id/closedrawer"/>
+
+        </LinearLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</LinearLayout>
