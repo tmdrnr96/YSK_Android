@@ -9,6 +9,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import vo.BookVO;
 
@@ -64,7 +66,19 @@ public class Parser {
                     if(tagName.equalsIgnoreCase("title")){ //시작태그 이름이 title이라면..
                         vo = new BookVO();
                         String title = parser.nextText(); //시작태그와 끝태그의 값을 가져온다.
-                        vo.setB_title(title);
+
+                        //네이버는 검색한 단어를 강조하기 위해 <b>태그로 묶어서 결과를 돌려준다.
+                        // 이를 제거하기 위해 정규식을 사용해야한다.
+                        //정규식을 사용하기 위해서는 Pattern클래스를 사용해야한다.
+                        Pattern pattern = Pattern.compile("<.*?>");//</태그> 한글자짜리 태그를 모두 잡아낸다.
+                        Matcher matcher = pattern.matcher(title); //자바의 test와 같은 역할을 한다.(pattern.test())
+                        
+                        if(matcher.find()){
+                            String s_title = matcher.replaceAll("");//정규식에 해당하는 패턴을 찾아서 모두 ""빈값으로 바꾼다.
+                            vo.setB_title(s_title); //제거할 태그가 있다면 태그를 없애고 출력
+                        }else {
+                            vo.setB_title(title);//제거할 태그가 없다면 그냥 출력
+                        }
 
                     }else if(tagName.equalsIgnoreCase("image")){ //지정된 요소이름으로 순차적으로 값을 얻어야한다.
                         String img = parser.nextText();

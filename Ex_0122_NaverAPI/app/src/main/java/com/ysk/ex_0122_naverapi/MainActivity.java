@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import parse.Parser;
+import parse.ViewModelAdapter;
 import vo.BookVO;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ListView myListView;
     Parser parser;
     ArrayList<BookVO> list;
+    ViewModelAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 //버튼을 누를때마다 초기화를 해주지 않으면 검색했던 값들이 누적되기 때문에
                 //검색을 할때마다 초기화를 시켜줌으로써 값이 누적되지 않게 만든다.
                 list = new ArrayList<>();
+                adapter = null;
 
                 //Async클래스를 통한 서버통신
                 new NaverAsync().execute();//doInBackground 메서드를 호출!
@@ -49,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //가상키보드에서 돋보기 버튼(actionSearch)을 클릭했는지 감지
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if( i == EditorInfo.IME_ACTION_SEARCH){
+                    //돋보기 버튼 클릭시 btn_search를 강제로 클릭!
+                    btn_search.performClick(); //해당버튼을 강제클릭하는 메서드
+                }
+                return true;
+            }
+        });
 
     }//onCreate()
 
@@ -73,10 +90,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<BookVO> bookVOS) {
             //doInBackground의 작업결과가 현재 메서드의 파라미터로 넘어온다.
-            for(int i = 0; i < bookVOS.size(); i++) {
 
-                Log.i("my", bookVOS.get(i).getB_price());
-            }
+            adapter = new ViewModelAdapter(MainActivity.this,
+                                            R.layout.book_item,//리스트뷰의 항목을 디자인한 xml파일
+                                            bookVOS, myListView);
+            //생성된 어댑터를 리스트 뷰에 세팅
+            //setAdapter()메서드가 호출되면 해당 ViewModelAdapter의 getView()메서드가
+            //bookVOS의 size()만큼 자동으로 반복된다.
+            myListView.setAdapter(adapter);
         }//onPostExecute
     }//NaverAsync
 
