@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/swipe">
+    <!--SwipeRefreshLayout안에는 ScrollView나 ListView 중 하나의 view만 추가할 수 있다.
+        예를 들어 LinearLayout 등을 넣으면 정상작동하지 않는다!-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--스크롤뷰는 직계자식을 딱 한개만 가지고 있을 수 있다.-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn2"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn3"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn4"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn5"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn6"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn7"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="btn8"/>
+
+            </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
