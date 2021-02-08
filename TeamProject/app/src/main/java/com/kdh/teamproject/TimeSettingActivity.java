@@ -35,7 +35,6 @@ public class TimeSettingActivity extends AppCompatActivity {
                     break;
 
                 case R.id.btn_cancel:
-
                     finish();
                     break;
             }//switch

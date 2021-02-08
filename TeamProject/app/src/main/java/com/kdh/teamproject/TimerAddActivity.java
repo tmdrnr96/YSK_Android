@@ -67,6 +67,8 @@ public class TimerAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //시간 추가 페이지로 이동
+                Intent i = new Intent(TimerAddActivity.this, MainActivity.class);
+                startActivity(i);
 
 
             }

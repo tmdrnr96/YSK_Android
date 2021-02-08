@@ -15,7 +15,8 @@ public class MainPageActivity extends AppCompatActivity {
 
     DrawerLayout drawer_layout;
     LinearLayout drawer;
-    Button open, btn2 ;
+    Button open, btn1, btn2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,10 @@ public class MainPageActivity extends AppCompatActivity {
         drawer_layout = findViewById(R.id.drawer_layout);
         drawer = findViewById(R.id.drawer);
         open = findViewById(R.id.opendrawer);
+        btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
+
+
 
         //서랍열기
         open.setOnClickListener(new View.OnClickListener() {
@@ -33,15 +37,23 @@ public class MainPageActivity extends AppCompatActivity {
 
                 drawer_layout.openDrawer(drawer);
 
+
+            }
+        });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainPageActivity.this,TimeSettingActivity.class);
+                startActivity(i);
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainPageActivity.this,TimerAddActivity.class);
+                Intent i = new Intent(MainPageActivity.this, TimerAddActivity.class);
                 startActivity(i);
-                finish();
             }
         });
 
@@ -77,6 +89,8 @@ public class MainPageActivity extends AppCompatActivity {
     };
 
 
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -94,6 +108,4 @@ public class MainPageActivity extends AppCompatActivity {
 
 
     }
-
-
 }

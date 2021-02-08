@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import vo.TimerAddVO;
+
 //import adaoter.ImageAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
 
         opendrawer.setOnClickListener(click);
 
+        pref = getSharedPreferences("SHARE",MODE_PRIVATE);
+        SharedPreferences.Editor save = pref.edit();
+
+
+
     }
 
     View.OnClickListener click = new View.OnClickListener() {
@@ -92,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             save.putString("time4","1");
 
             save.commit();
+
 
             Intent i = new Intent(MainActivity.this,TimerAddActivity.class);
             startActivity(i);
